@@ -11,15 +11,9 @@ namespace MailboxAPI
 {
     public class Startup
     {
-        public Startup(IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            //Configuration = configuration;
-            var builder = new ConfigurationBuilder()
-            .SetBasePath(env.ContentRootPath)
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-            .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-            .AddEnvironmentVariables();
-            Configuration = builder.Build();
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -27,10 +21,11 @@ namespace MailboxAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration["App:ConnectionStrings:MailboxDB"]));
+            services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:MailboxDB"]));
             services.AddSingleton(typeof(IDataRepository<Factura, long>), typeof(FacturaManager));
             services.AddMvc();
-           // var connectionString = Configuration["App::ConnectionStrings:MailboxDB"];
+            /*services.AddDbContext<ApplicationContext>(options
+             => options.UseSqlServer(Configuration.GetConnectionString("MailboxDB")));*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
