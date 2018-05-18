@@ -22,10 +22,8 @@ namespace MailboxAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:MailboxDB"]));
-            services.AddSingleton(typeof(IDataRepository<Factura, long>), typeof(FacturaManager));
+            services.AddScoped(typeof(IDataRepository<Factura, long>), typeof(FacturaManager));
             services.AddMvc();
-            /*services.AddDbContext<ApplicationContext>(options
-             => options.UseSqlServer(Configuration.GetConnectionString("MailboxDB")));*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

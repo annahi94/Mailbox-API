@@ -24,12 +24,20 @@ namespace MailboxAPI.Models.DataManager
 
         public long Delete(long id)
         {
-            throw new NotImplementedException();
+            int facturaID = 0;
+            var factura = ctx.Facturas.FirstOrDefault(b => b.FacturaId == id);
+            if (factura != null)
+            {
+                ctx.Facturas.Remove(factura);
+                facturaID = ctx.SaveChanges();
+            }
+            return facturaID;
         }
 
         public Factura Get(long id)
         {
-            throw new NotImplementedException();
+            var factura = ctx.Facturas.FirstOrDefault(b => b.FacturaId == id);
+            return factura;
         }
 
         public IEnumerable<Factura> GetAll()
