@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using MailboxAPI.Models.Entities;
 
 namespace MailboxAPI
 {
@@ -23,6 +24,7 @@ namespace MailboxAPI
         {
             services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:MailboxDB"]));
             services.AddScoped(typeof(IDataRepository<Factura, long>), typeof(FacturaManager));
+            services.AddScoped(typeof(IDataRepository<Area, long>), typeof(AreaManager));        
             services.AddMvc();
         }
 

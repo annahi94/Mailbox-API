@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MailboxAPI.Models.Entities;
 using MailboxAPI.Models.Repository;
 
 
@@ -25,7 +26,7 @@ namespace MailboxAPI.Models.DataManager
         public long Delete(long id)
         {
             long facturaID = 0;
-            var factura = ctx.Facturas.FirstOrDefault(b => b.FacturaId == id);
+            var factura = ctx.Facturas.FirstOrDefault(b => b.Id == id);
             if (factura != null)
             {
                 ctx.Facturas.Remove(factura);
@@ -36,7 +37,7 @@ namespace MailboxAPI.Models.DataManager
 
         public Factura Get(long id)
         {
-            var factura = ctx.Facturas.FirstOrDefault(b => b.FacturaId == id);
+            var factura = ctx.Facturas.FirstOrDefault(b => b.Id == id);
             return factura;
         }
 
