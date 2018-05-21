@@ -11,7 +11,7 @@ using System;
 namespace MailboxAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20180517195445_MailboxAPI.Models.ApplicationContext")]
+    [Migration("20180521181056_MailboxAPI.Models.ApplicationContext")]
     partial class MailboxAPIModelsApplicationContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace MailboxAPI.Migrations
 
             modelBuilder.Entity("MailboxAPI.Models.Factura", b =>
                 {
-                    b.Property<int>("FacturaId")
+                    b.Property<long>("FacturaId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Area");
@@ -37,6 +37,8 @@ namespace MailboxAPI.Migrations
                     b.Property<string>("NoteType");
 
                     b.Property<string>("PO");
+
+                    b.Property<byte[]>("PdfPath");
 
                     b.Property<string>("TotalValue");
 

@@ -16,5 +16,6 @@ namespace MailboxAPI.Models
         public string EmissionDate { get; set; }
         public string NoteType { get; set; }
         public int Area { get; set; }
+        public byte[] PdfPath { get; set; }
     }
 }

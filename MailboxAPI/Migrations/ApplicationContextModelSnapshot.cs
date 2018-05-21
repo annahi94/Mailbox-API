@@ -22,7 +22,7 @@ namespace MailboxAPI.Migrations
 
             modelBuilder.Entity("MailboxAPI.Models.Factura", b =>
                 {
-                    b.Property<int>("FacturaId")
+                    b.Property<long>("FacturaId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("Area");
@@ -36,6 +36,8 @@ namespace MailboxAPI.Migrations
                     b.Property<string>("NoteType");
 
                     b.Property<string>("PO");
+
+                    b.Property<byte[]>("PdfPath");
 
                     b.Property<string>("TotalValue");
 
