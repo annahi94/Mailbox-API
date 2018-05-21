@@ -20,6 +20,8 @@ namespace MailboxAPI.Models.Entities
         
         [ForeignKey("Area")]
         public long Area_id { get; set; }
-        public virtual Area Area { get; set; }        
+        public virtual Area Area { get; set; }                
+
+        public byte[] PdfPath { get; set; }
     }
 }

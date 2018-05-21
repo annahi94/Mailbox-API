@@ -11,7 +11,7 @@ using System;
 namespace MailboxAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20180521183601_MailboxAPI.API.Models.ApplicationContext")]
+    [Migration("20180521200315_MailboxAPI.API.Models.ApplicationContext")]
     partial class MailboxAPIAPIModelsApplicationContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,11 +42,15 @@ namespace MailboxAPI.Migrations
 
                     b.Property<string>("CNPJ");
 
+                    b.Property<string>("EmissionDate");
+
                     b.Property<string>("NoNote");
 
                     b.Property<string>("NoteType");
 
                     b.Property<string>("PO");
+
+                    b.Property<byte[]>("PdfPath");
 
                     b.Property<string>("TotalValue");
 

@@ -30,10 +30,11 @@ namespace MailboxAPI.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Area_id = table.Column<long>(nullable: false),
                     CNPJ = table.Column<string>(nullable: true),
-                    EmissionDate = table.Column<DateTime>(nullable: false),
+                    EmissionDate = table.Column<string>(nullable: true),
                     NoNote = table.Column<string>(nullable: true),
                     NoteType = table.Column<string>(nullable: true),
                     PO = table.Column<string>(nullable: true),
+                    PdfPath = table.Column<byte[]>(nullable: true),
                     TotalValue = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

@@ -41,15 +41,17 @@ namespace MailboxAPI.Migrations
 
                     b.Property<string>("CNPJ");
 
+                    b.Property<string>("EmissionDate");
+
                     b.Property<string>("NoNote");
 
                     b.Property<string>("NoteType");
 
                     b.Property<string>("PO");
 
-                    b.Property<string>("TotalValue");
+                    b.Property<byte[]>("PdfPath");
 
-                    b.Property<DateTime>("EmissionDate");
+                    b.Property<string>("TotalValue");
 
                     b.HasKey("Id");
 
