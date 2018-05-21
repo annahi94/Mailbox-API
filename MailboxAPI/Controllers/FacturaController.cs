@@ -30,7 +30,7 @@ namespace MailboxAPI.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public Factura Get(int id)
+        public Factura Get(long id)
         {
             return _iRepo.Get(id);
         }
@@ -44,14 +44,14 @@ namespace MailboxAPI.Controllers
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Factura factura)
+        public void Put(long id, [FromBody]Factura factura)
         {
-            _iRepo.Update(factura.FacturaId, factura);
+            _iRepo.Update(id, factura);
         }
 
         // DELETE api/<controller>/5
         [HttpDelete("{id}")]
-        public long Delete(int id)
+        public long Delete(long id)
         {
             return _iRepo.Delete(id);
         }

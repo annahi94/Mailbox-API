@@ -8,7 +8,7 @@ namespace MailboxAPI.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int FacturaId { get; set; }
+        public long FacturaId { get; set; }
         public string CNPJ { get; set; }
         public string PO { get; set; }
         public string NoNote { get; set; }

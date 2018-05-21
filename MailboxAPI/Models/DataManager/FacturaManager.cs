@@ -24,7 +24,7 @@ namespace MailboxAPI.Models.DataManager
 
         public long Delete(long id)
         {
-            int facturaID = 0;
+            long facturaID = 0;
             var factura = ctx.Facturas.FirstOrDefault(b => b.FacturaId == id);
             if (factura != null)
             {
