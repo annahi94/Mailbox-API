@@ -23,6 +23,18 @@ namespace MailboxAPI
         {
             services.AddDbContext<ApplicationContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:MailboxDB"]));
             services.AddScoped(typeof(IDataRepository<Factura, long>), typeof(FacturaManager));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                    builder =>
+                    {
+                        builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials();
+                    });
+            });
             services.AddMvc();
         }
 
@@ -33,7 +45,7 @@ namespace MailboxAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("AllowAll");
             app.UseMvc();
         }
     }

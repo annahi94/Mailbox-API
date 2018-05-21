@@ -13,7 +13,7 @@ namespace MailboxAPI.Migrations
                 name: "Facturas",
                 columns: table => new
                 {
-                    FacturaId = table.Column<int>(nullable: false)
+                    FacturaId = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Area = table.Column<int>(nullable: false),
                     CNPJ = table.Column<string>(nullable: true),
@@ -21,6 +21,7 @@ namespace MailboxAPI.Migrations
                     NoNote = table.Column<string>(nullable: true),
                     NoteType = table.Column<string>(nullable: true),
                     PO = table.Column<string>(nullable: true),
+                    PdfPath = table.Column<byte[]>(nullable: true),
                     TotalValue = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
