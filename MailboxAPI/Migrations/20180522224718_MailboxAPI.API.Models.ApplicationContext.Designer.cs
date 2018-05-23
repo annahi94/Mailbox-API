@@ -11,8 +11,8 @@ using System;
 namespace MailboxAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20180521181056_MailboxAPI.Models.ApplicationContext")]
-    partial class MailboxAPIModelsApplicationContext
+    [Migration("20180522224718_MailboxAPI.API.Models.ApplicationContext")]
+    partial class MailboxAPIAPIModelsApplicationContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,12 +21,24 @@ namespace MailboxAPI.Migrations
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MailboxAPI.Models.Factura", b =>
+            modelBuilder.Entity("MailboxAPI.Models.Entities.Area", b =>
                 {
-                    b.Property<long>("FacturaId")
+                    b.Property<long>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Area");
+                    b.Property<string>("name");
+
+                    b.HasKey("id");
+
+                    b.ToTable("tblArea");
+                });
+
+            modelBuilder.Entity("MailboxAPI.Models.Entities.Factura", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<long>("Area_id");
 
                     b.Property<string>("CNPJ");
 
@@ -42,9 +54,19 @@ namespace MailboxAPI.Migrations
 
                     b.Property<string>("TotalValue");
 
-                    b.HasKey("FacturaId");
+                    b.HasKey("Id");
 
-                    b.ToTable("Facturas");
+                    b.HasIndex("Area_id");
+
+                    b.ToTable("tblFacturas");
+                });
+
+            modelBuilder.Entity("MailboxAPI.Models.Entities.Factura", b =>
+                {
+                    b.HasOne("MailboxAPI.Models.Entities.Area", "Area")
+                        .WithMany()
+                        .HasForeignKey("Area_id")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

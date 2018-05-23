@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MailboxAPI.Models.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace MailboxAPI.Models
 {
@@ -6,11 +7,15 @@ namespace MailboxAPI.Models
     {
         public ApplicationContext(DbContextOptions opts) : base(opts)
         {
+           
+        }
+        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            
         }
 
         public DbSet<Factura> Facturas { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-        }
+        public DbSet<Area> Areas { get; set; }
     }
 }
