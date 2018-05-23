@@ -22,12 +22,12 @@ namespace MailboxAPI.Migrations
 
             modelBuilder.Entity("MailboxAPI.Models.Entities.Area", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<long>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Nombre");
+                    b.Property<string>("name");
 
-                    b.HasKey("Id");
+                    b.HasKey("id");
 
                     b.ToTable("tblArea");
                 });

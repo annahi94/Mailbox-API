@@ -12,7 +12,7 @@ namespace MailboxAPI.Models.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-        public string Nombre { get; set; }
+        public long id { get; set; }
+        public string name { get; set; }
     }
 }

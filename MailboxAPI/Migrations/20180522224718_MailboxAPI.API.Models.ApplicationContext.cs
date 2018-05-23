@@ -13,13 +13,13 @@ namespace MailboxAPI.Migrations
                 name: "tblArea",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
+                    id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Nombre = table.Column<string>(nullable: true)
+                    name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_tblArea", x => x.Id);
+                    table.PrimaryKey("PK_tblArea", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -44,7 +44,7 @@ namespace MailboxAPI.Migrations
                         name: "FK_tblFacturas_tblArea_Area_id",
                         column: x => x.Area_id,
                         principalTable: "tblArea",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 

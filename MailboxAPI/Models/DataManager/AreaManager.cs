@@ -7,17 +7,20 @@ using System.Threading.Tasks;
 
 namespace MailboxAPI.Models.DataManager
 {
-    public class AreaManager : IDataRepository<AreaManager, long>
+    public class AreaManager : IDataRepository<Area, long>
     {
         ApplicationContext ctx;
+
         public AreaManager(ApplicationContext c)
         {
             ctx = c;
-        }
+        }        
 
-        public long Add(AreaManager b)
+        public long Add(Area area)
         {
-            throw new NotImplementedException();
+            ctx.Areas.Add(area);
+            ctx.SaveChanges();
+            return area.id;
         }
 
         public long Delete(long id)
@@ -25,19 +28,19 @@ namespace MailboxAPI.Models.DataManager
             throw new NotImplementedException();
         }
 
-        public AreaManager Get(long id)
+        public Area Get(long id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<AreaManager> GetAll()
+        public IEnumerable<Area> GetAll()
         {
-            throw new NotImplementedException();
+            return ctx.Areas.ToList();
         }
 
-        public long Update(long id, AreaManager b)
+        public long Update(long id, Area b)
         {
             throw new NotImplementedException();
-        }
+        }        
     }
 }
