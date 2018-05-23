@@ -43,8 +43,8 @@ namespace MailboxAPI.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPost("{id}")]
-        public void Post(long id, [FromBody]Factura factura)
+        [HttpPut("{id}")]
+        public void Put(long id, [FromBody]Factura factura)
         {
             _iRepo.Update(id, factura);
         }
