@@ -47,6 +47,11 @@ namespace MailboxAPI.Models.DataManager
             return facturas;
         }
 
+        public Factura SaveOrUpdate(Factura b)
+        {
+            throw new NotImplementedException();
+        }
+
         public long Update(long id, Factura item)
         {
             long facturaID = 0;

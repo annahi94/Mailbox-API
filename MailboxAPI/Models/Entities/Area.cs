@@ -14,5 +14,6 @@ namespace MailboxAPI.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long id { get; set; }
         public string name { get; set; }
+        public bool active { get; set; } 
     }
 }

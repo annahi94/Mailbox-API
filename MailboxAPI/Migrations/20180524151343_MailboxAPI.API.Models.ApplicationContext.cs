@@ -15,6 +15,7 @@ namespace MailboxAPI.Migrations
                 {
                     id = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    active = table.Column<bool>(nullable: false),
                     name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>

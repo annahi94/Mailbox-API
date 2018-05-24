@@ -9,9 +9,9 @@ namespace MailboxAPI.Models.Repository
     {
         IEnumerable<TEntity> GetAll();
         TEntity Get(U id);
-        long Add(TEntity b);
+        long Add(TEntity b);        
         long Update(U id, TEntity b);
         long Delete(U id);
-
+        TEntity SaveOrUpdate(TEntity b);
     }
 }

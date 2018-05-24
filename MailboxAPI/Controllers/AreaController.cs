@@ -1,4 +1,5 @@
-﻿using MailboxAPI.Models.Entities;
+﻿using MailboxAPI.Models.DataManager;
+using MailboxAPI.Models.Entities;
 using MailboxAPI.Models.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,7 +12,7 @@ namespace MailboxAPI.Controllers
     [Route("api/Area")]
     public class AreaController : Controller
     {
-        private IDataRepository<Area, long> service;
+        private IDataRepository<Area, long> service;        
 
         public AreaController(IDataRepository<Area, long> service)
         {
@@ -25,9 +26,9 @@ namespace MailboxAPI.Controllers
         }
 
         [HttpPost]
-        public void Add([FromBody]Area area)
+        public Area Add([FromBody]Area area)
         {
-            service.Add(area);
+            return service.SaveOrUpdate(area);
         }
     }
 }

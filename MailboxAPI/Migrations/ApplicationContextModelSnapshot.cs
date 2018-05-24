@@ -25,6 +25,8 @@ namespace MailboxAPI.Migrations
                     b.Property<long>("id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<bool>("active");
+
                     b.Property<string>("name");
 
                     b.HasKey("id");

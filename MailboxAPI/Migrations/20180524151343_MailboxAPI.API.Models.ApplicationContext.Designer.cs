@@ -11,7 +11,7 @@ using System;
 namespace MailboxAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20180522224718_MailboxAPI.API.Models.ApplicationContext")]
+    [Migration("20180524151343_MailboxAPI.API.Models.ApplicationContext")]
     partial class MailboxAPIAPIModelsApplicationContext
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,6 +25,8 @@ namespace MailboxAPI.Migrations
                 {
                     b.Property<long>("id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("active");
 
                     b.Property<string>("name");
 
