@@ -14,7 +14,21 @@ namespace MailboxAPI.Models.DataManager
         public AreaManager(ApplicationContext c)
         {
             ctx = c;
-        }        
+        }
+
+        public Area SaveOrUpdate(Area area)
+        {
+            if (area.id == 0)            
+                ctx.Areas.Add(area);                       
+            else
+            {
+                Area areaBd = ctx.Areas.Where(x => x.id == area.id).First();
+                ctx.Entry(areaBd).CurrentValues.SetValues(area);
+            }
+
+            ctx.SaveChanges();
+            return area;
+        }
 
         public long Add(Area area)
         {
@@ -35,8 +49,8 @@ namespace MailboxAPI.Models.DataManager
 
         public IEnumerable<Area> GetAll()
         {
-            return ctx.Areas.ToList();
-        }
+            return ctx.Areas.OrderBy(x => x.name).ToList();
+        }        
 
         public long Update(long id, Area b)
         {
