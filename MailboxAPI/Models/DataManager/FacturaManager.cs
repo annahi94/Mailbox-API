@@ -58,8 +58,12 @@ namespace MailboxAPI.Models.DataManager
             var factura = ctx.Facturas.Find(id);
             if (factura != null)
             {
-                factura.PO = item.PO;
+                factura.CNPJ = item.CNPJ;
+                factura.EmissionDate = item.EmissionDate;
+                factura.NoNote = item.NoNote;
                 factura.NoteType = item.NoteType;
+                factura.PO = item.PO;
+                factura.TotalValue = item.TotalValue;
 
                 facturaID = ctx.SaveChanges();
             }
